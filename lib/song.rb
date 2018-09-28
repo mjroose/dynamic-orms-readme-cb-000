@@ -44,7 +44,6 @@ class Song
     values = self.class.column_names.collect do |col_name|
       send(col_name).nil? ? nil : "'#{send(col_name)}'"
     end.compact.join(", ")
-    binding.pry
   end
 
   def col_names_for_insert
