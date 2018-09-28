@@ -43,7 +43,7 @@ class Song
   def values_for_insert
     values = self.class.column_names.collect do |col_name|
       send(col_name).nil? ? nil : "'#{send(col_name)}'"
-    end..compact.join(", ")
+    end.compact.join(", ")
     binding.pry
   end
 
