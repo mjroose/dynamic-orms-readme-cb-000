@@ -14,11 +14,10 @@ class Song
     sql = "pragma table_info('#{table_name}')"
 
     table_info = DB[:conn].execute(sql)
-    column_names = []
-    table_info.each do |row|
-      column_names << row["name"]
-    end
-    column_names.compact
+
+    column_names = table_info.collect do |row|
+      row["name"]
+    end.compact
     binding.pry
   end
 
